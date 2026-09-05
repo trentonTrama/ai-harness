@@ -16,25 +16,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
 
       - name: Check JSON syntax
         run: |
           fail=0
           while IFS= read -r file; do
-            if python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$file"; then
+            if node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$file"; then
               echo "ok   $file"
             else
-              echo "FAIL $file"
+              echo "::error file=$file::invalid JSON"
               fail=1
             fi
-          done < <(find . -path ./.git -prune -o -name '*.json' -print)
+          done < <(find . -path ./.git -prune -o -path ./node_modules -prune -o -name '*.json' -print)
           exit $fail
 
       - name: Validate marketplace and plugins
-        run: python3 scripts/validate_marketplace.py
+        run: npm run validate
 
       - name: Validate with Claude Code CLI
         run: |

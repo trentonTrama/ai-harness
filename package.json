@@ -1,0 +1,20 @@
+{
+  "name": "ai-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Claude Code plugin marketplace — AI-guided workspace with subagents and customizable skills.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "tsx scripts/validate-marketplace.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run validate"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

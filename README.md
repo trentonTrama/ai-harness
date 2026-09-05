@@ -32,7 +32,7 @@ plugins/<name>/
   .claude-plugin/plugin.json        plugin manifest
   skills/<skill-name>/SKILL.md      skill definition + frontmatter
   skills/<skill-name>/references/   supporting material loaded on demand
-scripts/validate_marketplace.py     local + CI validation
+scripts/validate-marketplace.ts     local + CI validation (TypeScript)
 ```
 
 ## Adding a plugin
@@ -43,19 +43,29 @@ scripts/validate_marketplace.py     local + CI validation
    A skill lives at `skills/<skill-name>/SKILL.md` and its frontmatter `name`
    must match the directory name.
 3. Register it in the `plugins` array of `.claude-plugin/marketplace.json`.
-4. Run the validator.
+4. Run `npm run check`.
 
 ## Validating
 
+The validator is TypeScript, run with [tsx](https://tsx.is). Install once:
+
 ```bash
-python3 scripts/validate_marketplace.py
+npm install
 ```
+
+Then typecheck and validate:
+
+```bash
+npm run check
+```
+
+The Claude Code CLI has its own manifest check, which CI runs as well:
 
 ```bash
 claude plugin validate .
 ```
 
-Both run on every push and pull request via
+All of it runs on every push and pull request via
 [`.github/workflows/validate.yml`](.github/workflows/validate.yml), alongside
 markdown and frontmatter linting in
 [`.github/workflows/lint.yml`](.github/workflows/lint.yml).
