@@ -1,0 +1,45 @@
+name: Validate marketplace
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate manifests and skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check JSON syntax
+        run: |
+          fail=0
+          while IFS= read -r file; do
+            if python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$file"; then
+              echo "ok   $file"
+            else
+              echo "FAIL $file"
+              fail=1
+            fi
+          done < <(find . -path ./.git -prune -o -name '*.json' -print)
+          exit $fail
+
+      - name: Validate marketplace and plugins
+        run: python3 scripts/validate_marketplace.py
+
+      - name: Validate with Claude Code CLI
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate . || {
+            echo "::error::claude plugin validate reported problems"
+            exit 1
+          }

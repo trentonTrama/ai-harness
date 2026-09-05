@@ -1,0 +1,15 @@
+{
+  "name": "procedural-guide-style",
+  "description": "Write and revise procedural guides, runbooks, SOPs, and technical walkthroughs in a plain-language field-guide voice.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Trenton"
+  },
+  "keywords": [
+    "writing",
+    "documentation",
+    "runbook",
+    "sop",
+    "style"
+  ]
+}
