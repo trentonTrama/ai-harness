@@ -1,6 +1,6 @@
 # Revision Checklist
 
-Run this against a draft before delivering it. Work top-down — structural problems change the bullets, so fixing language first wastes effort.
+Run this against any draft before delivering it — one you just wrote or one you are revising. Work top-down — structural problems change the bullets, so fixing language first wastes effort.
 
 ## Pass 1 — Structure
 

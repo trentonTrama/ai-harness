@@ -1,13 +1,14 @@
 # Annotated Exemplars
 
-Four reference documents across different domains, each annotated with the rules it demonstrates. Read the document first, then the annotation.
+Five reference documents across different domains, each annotated with the rules it demonstrates. Read the document first, then the annotation.
 
 **Contents**
 1. Location Scouting Pipeline — phased, terminal table, local instantiation
 2. Espresso Dial-In — phased with gating, both-ends diagnostics
 3. Production Incident Triage — phased, inline constraints, no table
 4. Sourdough Starter Revival — flat list, no headers *(closest to ideal form)*
-5. Failure gallery — the same content written wrong
+5. Contributing to a Style Skill — flat list with a terminal table, self-referential
+6. Failure gallery — the same content written wrong
 
 ---
 
@@ -168,7 +169,37 @@ A neglected starter is usually dormant rather than dead. Revival takes three to 
 
 ---
 
-## 5. Failure Gallery
+## 5. Contributing to a Style Skill
+
+*Excerpted from the plugin's CLAUDE.md; that file is the live document. This shows the one structural combination the exemplars above do not cover — a flat list that still ends in a table.*
+
+A rule that cannot be demonstrated is not ready to add, so the exemplar comes before the wording.
+
+* Check whether a conflict is real before resolving it. A rule that narrows *when* another rule applies does not contradict it.
+* Allow an override only when both conditions hold: one document can obey both rules at once, and the new rule names a document class. Failing either condition means you amend the existing rule instead of adding beside it.
+* Name the overridden rule inside the text of the override — `overrides rule 2 for runbooks`. Precedence that is only implied usually gets read as a contradiction.
+* Edit the superseded rule in place when you amend it. Two rules that disagree with no stated precedence leave the reader guessing which one wins.
+* Treat `Runbooks always use phase headers` as an override of rule 2. A runbook obeys both — flat stays the default and runbooks are the named exception.
+* Treat `A second sentence may carry a fallback command` as an amendment to rule 9. No bullet carries inference only and a command at the same time, so rule 9 gets edited rather than joined.
+
+| Change | Exemplar | Conflict check | This file |
+| --- | --- | --- | --- |
+| **New rule** | Required | Required | Only if the excerpt breaks |
+| **Amendment** | Update the existing passage | Not needed | Only if the excerpt breaks |
+| **Scoped override** | Required | Must name the rule it bends | Only if the excerpt breaks |
+| **Deletion** | Remove the annotations | Not needed | Only if the excerpt breaks |
+
+**Annotation**
+
+- Rule 2 (flat by default): the steps are ordered but nothing gates anything — you can check a conflict without having written an exemplar first. No headers.
+- Rule 17 (terminal table): the first exemplar here that combines a flat list with a table. The table is a parameter set, not a summary of the bullets, and the document ends on it.
+- Rule 1 (threshold opening): names what gates the work — the exemplar precedes the wording — rather than describing the phases ahead.
+- Rule 10 (both ends): the two worked cases bracket the decision. One resolves to an override, the other to an amendment, so the reader can find the boundary rather than seeing one side of it.
+- Rule 9: the second sentence on each worked case carries the verdict's reasoning, never a restatement of the case.
+
+---
+
+## 6. Failure Gallery
 
 The same content, written wrong. Each pair shows the default LLM instinct and the correction.
 

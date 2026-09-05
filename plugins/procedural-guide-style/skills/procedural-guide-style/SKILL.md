@@ -89,8 +89,10 @@ These appear in default LLM documentation prose and must not appear here:
 
 ## Working Process
 
-When **writing new**: pick the opening type (shape or threshold), decide flat vs. phased using rule 2, draft the bullets, then run the revision checklist.
+When **writing new**: pick the opening type (shape or threshold), decide flat vs. phased using rule 2, draft the bullets, then run `references/revision-checklist.md`.
 
 When **revising an existing draft**: read `references/revision-checklist.md` and pass over the draft rule by rule. Report what you changed rather than silently rewriting.
 
-Read `references/exemplars.md` for four annotated reference documents across different domains. Consult it when you need to see how a rule behaves in practice, particularly rules 1, 2, 9, and 10 — those are the ones most often applied wrongly from the description alone.
+When **changing this ruleset**: read `CLAUDE.md` at the plugin root before adding, amending, or deleting a rule.
+
+Read `references/exemplars.md` for five annotated reference documents across different domains. Consult it when you need to see how a rule behaves in practice, particularly rules 1, 2, 9, and 10 — those are the ones most often applied wrongly from the description alone.
