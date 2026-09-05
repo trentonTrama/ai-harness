@@ -175,6 +175,8 @@ A neglected starter is usually dormant rather than dead. Revival takes three to 
 
 A rule that cannot be demonstrated is not ready to add, so the exemplar comes before the wording.
 
+* Generate concrete candidate examples and put them to the user before wording a rule change. A rule that reads clearly in the abstract usually hides a boundary case that only surfaces once someone has to classify a real document with it.
+* Show at least two candidates that land on opposite verdicts — one that amends, one that overrides. A single example teaches the verdict but not the boundary, and the boundary is the part that gets applied wrongly.
 * Check whether a conflict is real before resolving it. A rule that narrows *when* another rule applies does not contradict it.
 * Allow an override only when both conditions hold: one document can obey both rules at once, and the new rule names a document class. Failing either condition means you amend the existing rule instead of adding beside it.
 * Name the overridden rule inside the text of the override — `overrides rule 2 for runbooks`. Precedence that is only implied usually gets read as a contradiction.
@@ -194,7 +196,7 @@ A rule that cannot be demonstrated is not ready to add, so the exemplar comes be
 - Rule 2 (flat by default): the steps are ordered but nothing gates anything — you can check a conflict without having written an exemplar first. No headers.
 - Rule 17 (terminal table): the first exemplar here that combines a flat list with a table. The table is a parameter set, not a summary of the bullets, and the document ends on it.
 - Rule 1 (threshold opening): names what gates the work — the exemplar precedes the wording — rather than describing the phases ahead.
-- Rule 10 (both ends): the two worked cases bracket the decision. One resolves to an override, the other to an amendment, so the reader can find the boundary rather than seeing one side of it.
+- Rule 10 (both ends): applied twice over. The rule about showing opposite verdicts states the principle, and the two worked cases enact it — one resolves to an override, the other to an amendment, so the reader can find the boundary rather than seeing one side of it.
 - Rule 9: the second sentence on each worked case carries the verdict's reasoning, never a restatement of the case.
 
 ---

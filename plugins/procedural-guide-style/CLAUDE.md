@@ -3,6 +3,8 @@
 A rule that cannot be demonstrated is not ready to add, so the exemplar comes before the wording.
 
 * Write the exemplar passage first, word the rule from it, and ship both in the same change. A rule you cannot show working in `skills/procedural-guide-style/references/exemplars.md` is still too abstract to enforce.
+* Generate concrete candidate examples and put them to the user before wording a rule change. A rule that reads clearly in the abstract usually hides a boundary case that only surfaces once someone has to classify a real document with it.
+* Show at least two candidates that land on opposite verdicts — one that amends, one that overrides. A single example teaches the verdict but not the boundary, and the boundary is the part that gets applied wrongly.
 * Check whether a conflict is real before resolving it. A rule that narrows *when* another rule applies does not contradict it.
 * Allow an override only when both conditions hold: one document can obey both rules at once, and the new rule names a document class. Failing either condition means you amend the existing rule instead of adding beside it.
 * Name the overridden rule inside the text of the override — `overrides rule 2 for runbooks`. Precedence that is only implied usually gets read as a contradiction.

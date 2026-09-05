@@ -246,6 +246,19 @@ function validatePlugin(entry: PluginEntry, index: number, seen: Set<string>): v
     error(`${label} (${name}): version '${String(entry.version)}' is not semver`);
   }
 
+  // an install resolves the marketplace entry, so a disagreement ships a stale version
+  if (
+    manifest !== null &&
+    entry.version !== undefined &&
+    manifest.version !== undefined &&
+    String(entry.version) !== String(manifest.version)
+  ) {
+    error(
+      `${label} (${name}): version '${String(entry.version)}' does not match ` +
+        `${rel(manifestPath)} version '${String(manifest.version)}'`,
+    );
+  }
+
   const skillsDir = join(pluginDir, "skills");
   if (isDir(skillsDir)) {
     const skillDirs = listDirs(skillsDir);
