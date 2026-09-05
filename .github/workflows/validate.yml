@@ -1,0 +1,64 @@
+name: Validate marketplace
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate manifests and skills
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # the version-bump check diffs against the base branch
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Check JSON syntax
+        run: |
+          fail=0
+          while IFS= read -r file; do
+            if node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$file"; then
+              echo "ok   $file"
+            else
+              echo "::error file=$file::invalid JSON"
+              fail=1
+            fi
+          done < <(find . -path ./.git -prune -o -path ./node_modules -prune -o -name '*.json' -print)
+          exit $fail
+
+      - name: Validate marketplace and plugins
+        run: npm run validate
+
+      - name: Require a version bump for changed plugins
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: origin/${{ github.base_ref }}
+        run: |
+          git fetch --no-tags origin \
+            "+refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
+          npm run version-check
+
+      - name: Validate with Claude Code CLI
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate . || {
+            echo "::error::claude plugin validate reported problems"
+            exit 1
+          }

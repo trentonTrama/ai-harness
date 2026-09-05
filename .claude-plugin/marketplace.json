@@ -1,0 +1,29 @@
+{
+  "name": "ai-harness",
+  "owner": {
+    "name": "Trenton",
+    "email": "trenton.trama@gmail.com"
+  },
+  "metadata": {
+    "description": "AI-guided workspace for Claude Code with subagents and customizable skills.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "procedural-guide-style",
+      "source": "./plugins/procedural-guide-style",
+      "description": "Write and revise procedural guides, runbooks, SOPs, and technical walkthroughs in a plain-language field-guide voice.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Trenton"
+      },
+      "keywords": [
+        "writing",
+        "documentation",
+        "runbook",
+        "sop",
+        "style"
+      ]
+    }
+  ]
+}
